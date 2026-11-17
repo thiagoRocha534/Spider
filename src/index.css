@@ -1,0 +1,63 @@
+@import 'tailwindcss';
+
+/* Design tokens do projeto. Tudo que entra aqui vira utilitário automaticamente:
+   --color-spider-red -> bg-spider-red, text-spider-red, border-spider-red... */
+@theme {
+  /* Geist vem do Google Fonts (index.html); o resto é fallback enquanto carrega. */
+  --font-sans:
+    'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, 'SFMono-Regular', Menlo, Monaco, Consolas, monospace;
+
+  /* Paleta da marca — cores globais do projeto. */
+  --color-black: #14171a;
+  --color-gray: #cbd1d8;
+  --color-spider-red: #e0101a;
+  --color-deep-black: #1c1c1e;
+  --color-light-red: #fde9ea;
+  --color-danger: #c62828;
+  --color-danger-light: #fdecec;
+
+  /* Cores semânticas: use bg-surface, text-content, border-line nos componentes.
+     Assim um ajuste de fundo ou de texto acontece num lugar só. */
+  --color-surface: #ffffff;
+  /* Fundo da área de conteúdo: os cards brancos se destacam sobre ele. */
+  --color-canvas: #f5f7fa;
+  /* Cabeçalhos de tabela e rodapés de painel: um degrau acima do branco. */
+  --color-surface-subtle: #fafbfc;
+  --color-surface-muted: var(--color-light-red);
+  --color-content: var(--color-black);
+  --color-content-muted: #5a6472;
+  --color-content-subtle: #8a93a0;
+  /* Borda de cards e divisórias. O cinza da marca fica para bordas de input. */
+  --color-line: #e4e8ee;
+  --color-line-strong: var(--color-gray);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-surface font-sans text-content antialiased;
+  }
+
+  /* Anel de foco visível e consistente, só para navegação por teclado. */
+  :focus-visible {
+    @apply rounded-sm outline-2 outline-offset-2 outline-spider-red;
+  }
+
+  /* Respeita quem pediu menos animação no sistema operacional. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}

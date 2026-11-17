@@ -1,0 +1,23 @@
+/**
+ * Ponto único de importação do estado global:
+ *   import { store, orderModalAtom } from './store'
+ *
+ * Cada domínio de estado ganha seu próprio arquivo nesta pasta e é reexportado aqui.
+ *
+ * Formatos de atom disponíveis:
+ *   atom(valorInicial)                    -> primitivo, use com useAtom
+ *   atom((get) => ...)                    -> derivado só-leitura, use com useAtomValue
+ *   atom(null, (get, set) => ...)         -> ação de escrita, use com useSetAtom
+ *   atomWithStorage('chave', inicial, undefined, { getOnInit: true })  -> persiste no localStorage
+ */
+export { store } from './store'
+export * from './auth'
+export * from './deleteOrder'
+export * from './deleteProduct'
+export * from './newOrder'
+export * from './orderFilters'
+export * from './productFilters'
+export * from './productModal'
+export * from './serviceOrder'
+export * from './servicesReportFilters'
+export * from './signOutDialog'
